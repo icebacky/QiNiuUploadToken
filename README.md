@@ -1,9 +1,6 @@
 # QiNiuUploadToken
 生成七牛的token, 方便小伙伴们使用
 
-手头项目用到了七牛图床, 上传会用到upload token. 七牛推荐我们从服务端获取token, 然而我们的服务端大哥和善的笑笑说自己在客户端搞吧...
-这平台文档写的相当蛋疼, 看了好久都没看出来upload token到底怎么生成. 
-
 大体步骤参考[七牛上传凭证在线生成](http://jsfiddle.net/gh/get/extjs/4.2/icattlecoder/jsfiddle/tree/master/uptoken)
 1. 确定上传策略
 2. 将上传策略序列化成为json格式:
