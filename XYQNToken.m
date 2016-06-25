@@ -25,7 +25,7 @@
                                                          error:nil];
     
     // 3.对json序列化后的上传策略进行URL安全的Base64编码,得到如下encoded:
-    NSString* encoded = [self urlSafeBase64Encode:jsonData];
+    NSString* encoded = [self URLSafeBase64Encode:jsonData];
     
     // 4.用SecretKey对编码后的上传策略进行HMAC-SHA1加密，并且做URL安全的Base64编码,得到如下的encoded_signed:
     NSString *encoded_signed = [self HMACSHA1:secretKey text:encoded];
@@ -44,7 +44,7 @@
 
 #pragma mark - 编码及加密
 // URL安全的Base64编码
-+ (NSString *)urlSafeBase64Encode:(NSData *)text {
++ (NSString *)URLSafeBase64Encode:(NSData *)text {
     
     NSString *base64 = [[NSString alloc] initWithData:[QN_GTM_Base64 encodeData:text] encoding:NSUTF8StringEncoding];
     base64 = [base64 stringByReplacingOccurrencesOfString:@"+" withString:@"-"];
@@ -59,7 +59,7 @@
     char cHMAC[CC_SHA1_DIGEST_LENGTH];
     CCHmac(kCCHmacAlgSHA1, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
     NSData *HMAC = [[NSData alloc] initWithBytes:cHMAC length:CC_SHA1_DIGEST_LENGTH];
-    NSString *hash = [self urlSafeBase64Encode:HMAC];
+    NSString *hash = [self URLSafeBase64Encode:HMAC];
     return hash;
 }
 
